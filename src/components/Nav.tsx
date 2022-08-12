@@ -1,10 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import Icon from "components/Icon";
 import { NavLink } from "react-router-dom";
-
-
-
 
 const NavWrapper = styled.nav`
   line-height:24px;
@@ -39,16 +35,16 @@ function Nav() {
   return (
     <NavWrapper>
       <ul>
-        <li >
-          <NavLink to="/tags" activeClassName="selected">
-            <Icon name={"tags"} />
-            标签
-          </NavLink>
-        </li>
         <li>
           <NavLink to="/money" activeClassName="selected">
             <Icon name={"money"} />
             记账
+          </NavLink>
+        </li>
+        <li >
+          <NavLink to="/tags" activeClassName="selected">
+            <Icon name={"tags"} />
+            标签
           </NavLink>
         </li>
         <li>
