@@ -4,6 +4,11 @@ import styled from "styled-components";
 const TagsSection = styled.section`
     background:#ffffff;
     padding:0 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
     >ol{
         margin:0 -12px;
         >li{
@@ -19,7 +24,7 @@ const TagsSection = styled.section`
         background:none;
         border:none;
         padding:2 4px;
-        border-bottom:1px solid #333; 
+        border-bottom:2px solid #333; 
         color:#666;
         margin-top:8px;
     }
@@ -69,12 +74,64 @@ const CategorySection = styled.section`
     
 `;
 const NumberSection = styled.section`
-
+    display: flex;
+    flex-direction:column;
+    >.output{
+        background:#ffffff;
+        font-size: 36px;
+        line-height:72px;
+        text-align: right;
+        padding: 16px;
+        box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.4),
+                    inset 0  5px 5px -5px rgba(0,0,0,0.4);
+    }
+     >.pad{
+        > button{
+            font-size: 18px;
+            float:left;
+            width: 25%;
+            height:64px;
+            border:none;
+            &.ok{
+                height: 128px;
+                float:right;
+            }
+            &.zero{
+                width:50%;
+            }
+            &:nth-child(1){
+                background: #f2f2f2;
+            }
+            &:nth-child(2),&:nth-child(5){
+                background: #e0e0e0;
+            }
+            &:nth-child(3),&:nth-child(6),&:nth-child(9){
+                background: #d3d3d3;
+            }
+            &:nth-child(4),&:nth-child(7),&:nth-child(10){
+                background: #c1c1c1;
+            }
+            &:nth-child(8),&:nth-child(11),&:nth-child(13){
+                background: #b8b8b8;
+            }
+            &:nth-child(12){
+                background: #9a9a9a;
+            }
+            &:nth-child(14){
+                background: #a9a9a9;
+            }
+        }
+        
+    }
+`;
+const MyLayout = styled(Layout)`
+    display: flex;
+    flex-direction: column;
 `;
 
 const Money = () => {
     return (
-        <Layout>
+        <MyLayout className="hi">
             <TagsSection>
                 <ol>
                     <li>衣</li>
@@ -97,10 +154,10 @@ const Money = () => {
                 </ul>
             </CategorySection>
             <NumberSection>
-                <div>
+                <div className="output">
                     100
                 </div>
-                <div>
+                <div className="pad clearfix">
                     <button>1</button>
                     <button>2</button>
                     <button>3</button>
@@ -112,13 +169,12 @@ const Money = () => {
                     <button>7</button>
                     <button>8</button>
                     <button>9</button>
-                    <button>ok</button>
-                    <button>0</button>
-                    <button>.</button>
-
+                    <button className="ok">ok</button>
+                    <button className="zero">0</button>
+                    <button >.</button>
                 </div>
             </NumberSection>
-        </Layout>)
+        </MyLayout>)
 }
 
 export default Money;
