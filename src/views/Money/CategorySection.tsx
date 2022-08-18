@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import React from 'react';
+import React, { useState } from 'react';
 
-const _CategorySection = styled.section`
+const Wrapper = styled.section`
     font-size:24px;
     >ul{
         display:flex;
@@ -19,20 +19,26 @@ const _CategorySection = styled.section`
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                left: 0;
+                left: 0; 
             }
         }
     }
     
 `;
 const CategorySection: React.FC = () => {
+    const categoryMap = { '-': '支出', '+': '收入' };//哈希，关联符号对应的名字
+    const [categoryList] = useState<('+' | '-')[]>(['-', '+']);//通过遍历这个数组生成li标签
+    const [category, setCategory] = useState('-');
     return (
-        <_CategorySection>
+        <Wrapper>
             <ul>
-                <li className="selected">支出</li>
-                <li>收入</li>
+                {categoryList.map(c =>
+                    <li className={category === c ? 'selected' : ''}
+                        onClick={() => { setCategory(c) }}
+                    >{categoryMap[c]}</li>
+                )}
             </ul>
-        </_CategorySection>
+        </Wrapper>
     )
 }
 

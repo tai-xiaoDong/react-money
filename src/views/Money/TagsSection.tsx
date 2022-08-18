@@ -51,14 +51,14 @@ const TagsSection: React.FC = () => {
             setSelectedTags([...selectedTags, tag])
         }
     };
-
+    const getClass = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
     return (
         <Wrapper>
             <ol>
                 {tags.map((tag) =>
                     <li key={tag} onClick={
                         () => { onToggleTag(tag); }
-                    } className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''} >{tag}</li>
+                    } className={getClass(tag)} >{tag}</li>
                 )}
             </ol>
             <button onClick={onAddTag}>新增标签</button>
