@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import React from 'react';
+import React, { useState } from 'react';
+import generateOutput from './generateOutput';
 
-const _NumberPadSection = styled.section`
+const Wrapper = styled.section`
     display: flex;
     flex-direction:column;
     >.output{
@@ -9,7 +10,7 @@ const _NumberPadSection = styled.section`
         font-size: 36px;
         line-height:72px;
         text-align: right;
-        padding: 16px;
+        padding: 0 16px;
         box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.4),
                     inset 0  5px 5px -5px rgba(0,0,0,0.4);
     }
@@ -54,12 +55,33 @@ const _NumberPadSection = styled.section`
 `;
 //React.FC 是 React.FunctionComponent的简写
 const NumberPadSection: React.FC = () => {
+    const [output, _setOutput] = useState('0');
+    const setOutput = (output: string) => {
+        if (output.length > 16) {
+            output = output.slice(0, 16);
+        } else if (output.length === 0) {
+            output = '0';
+        }
+        _setOutput(output);
+    }
+    const onClickButtonWrapper = (e: React.MouseEvent) => {
+        const text = (e.target as HTMLButtonElement).textContent
+        if (text === null) { return; }
+        if (text === 'OK') {
+            //待补全
+            return;
+        }
+        if ("0123456789.".split('').concat(['删除', '清空']).indexOf(text) >= 0) {
+            setOutput(generateOutput(text, output));
+        }
+
+    };
     return (
-        <_NumberPadSection>
+        <Wrapper>
             <div className="output">
-                100
+                {output}
             </div>
-            <div className="pad clearfix">
+            <div className="pad clearfix" onClick={onClickButtonWrapper}>
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
@@ -75,7 +97,7 @@ const NumberPadSection: React.FC = () => {
                 <button className="zero">0</button>
                 <button >.</button>
             </div>
-        </_NumberPadSection>
+        </Wrapper>
     )
 }
 
