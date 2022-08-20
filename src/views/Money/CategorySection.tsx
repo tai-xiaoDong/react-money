@@ -25,18 +25,22 @@ const Wrapper = styled.section`
     }
     
 `;
-const CategorySection: React.FC = () => {
+type Props = {
+    value: '-' | '+';
+    onChange: (value: '-' | '+') => void;
+}
+const CategorySection: React.FC<Props> = (props) => {
     const categoryMap = { '-': '支出', '+': '收入' };//哈希，关联符号对应的名字
     // type Y = keyof typeof categoryMap;
     const [categoryList] = useState<('+' | '-')[]>(['-', '+']);//通过遍历这个数组生成li标签
-    const [category, setCategory] = useState('-');
+    const category = props.value;
     return (
         <Wrapper>
             <ul>
                 {categoryList.map(c =>
                     <li key={c}
                         className={category === c ? 'selected' : ''}
-                        onClick={() => { setCategory(c) }}
+                        onClick={() => { props.onChange(c) }}
                     >{categoryMap[c]}</li>
                 )}
             </ul>
