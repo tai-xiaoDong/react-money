@@ -2,6 +2,9 @@
 require('iconfont/money.svg');
 require('iconfont/tags.svg');
 require('iconfont/statistics.svg');
+require('iconfont/right.svg');
+
+
 
 type Props = {
     name: string;
