@@ -9,6 +9,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import { Tag } from "views/Tag";
 
 const AppWrapper = styled.div`
   color:#333;
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route path="/money">
             <Money />
+          </Route>
+          <Route path="/tags/:tag">
+            <Tag />
           </Route>
           <Route path="/tags">
             <Tags />
