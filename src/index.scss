@@ -43,8 +43,10 @@ body {
     display: inline-block;
 }
 
-button {
-    font-family: inherit;
+button,
+input {
+    font: inherit;
+
 }
 
 :focus {
