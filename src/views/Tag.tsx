@@ -43,7 +43,7 @@ const Tag: React.FC = (props) => {
                 <span></span>
             </Topbar>
             <InputWrapper>
-                <Input label="标签名:" type="text" placeholder={tag.name}></Input>
+                <Input label="标签名:" type="text" placeholder="标签名" value={tag.name}></Input>
             </InputWrapper>
             <Center>
                 <Button>删除标签</Button>
