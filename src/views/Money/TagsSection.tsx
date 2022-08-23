@@ -33,6 +33,7 @@ const Wrapper = styled.section`
         border-bottom:2px solid #333; 
         color:#666;
         margin-top:8px;
+        margin-bottom: 8px;;
     }
 `;
 
