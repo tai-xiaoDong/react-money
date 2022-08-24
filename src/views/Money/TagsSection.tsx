@@ -46,12 +46,14 @@ type Props = {
 const TagsSection: React.FC<Props> = (props) => {
     const { tags, setTags } = useTags();
     const selectedTagIds = props.value;
+    //新增
     const onAddTag = () => {
         const tagName = window.prompt('请输入标签名');
         if (tagName !== null) {
             setTags([...tags, { id: createId(), name: tagName }])
         }
     };
+    //选中
     const onToggleTag = (tagId: number) => {
         const index = selectedTagIds.indexOf(tagId);
         if (index >= 0) {
@@ -61,7 +63,10 @@ const TagsSection: React.FC<Props> = (props) => {
             props.onChange([...selectedTagIds, tagId])
         }
     };
+    //判断当前tag是否被选中
     const getClass = (tagId: number) => selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
+
+
     return (
         <Wrapper>
             <ol>

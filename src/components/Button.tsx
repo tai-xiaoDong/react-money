@@ -1,3 +1,4 @@
+//提供了一个button按钮的样式
 import styled from "styled-components"
 
 const Button = styled.button`

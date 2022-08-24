@@ -73,7 +73,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
             value = parseFloat(output);
         }
         props.onChange(value);
-    }
+    }//控制最大输入长度
     const onClickButtonWrapper = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) { return; }
@@ -84,7 +84,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
         if ("0123456789.".split('').concat(['删除', '清空']).indexOf(text) >= 0) {
             setOutput(generateOutput(text, output));
         }
-
+        //数字键盘的删除和清空按钮功能
     };
     return (
         <Wrapper>

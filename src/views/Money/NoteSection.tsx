@@ -26,5 +26,6 @@ const NoteSection: React.FC<Props> = (props) => {
         </Wrapper>
     )
 }
+//备注的输入框功能 受控组件
 
 export default NoteSection;

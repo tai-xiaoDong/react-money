@@ -34,3 +34,4 @@ const generateOutput = (text: string, output: string) => {
 }
 
 export default generateOutput;
+// 封装了数字键盘的功能

@@ -1,3 +1,4 @@
+// 提供了一个居中样式的Div
 import styled from "styled-components";
 
 const Center = styled.div`

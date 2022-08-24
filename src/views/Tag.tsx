@@ -10,7 +10,6 @@ import { Center } from 'components/Center';
 
 
 
-
 type Params = {
     id: string;
 }
@@ -31,19 +30,27 @@ const InputWrapper = styled.div`
     margin-top: 14px;
 `
 
-const Tag: React.FC = (props) => {
-    const { findTag } = useTags();
-    let { id } = useParams<Params>();
-    const tag = findTag(parseInt(id))
+const Tag: React.FC = () => {
+    const { findTag, updateTag } = useTags();
+    let { id: idString } = useParams<Params>();
+    const tag = findTag(parseInt(idString))
     return (
         <Layout>
             <Topbar>
                 <Icon name="left"></Icon>
                 <span>编辑标签</span>
-                <span></span>
+                <span />
             </Topbar>
             <InputWrapper>
-                <Input label="标签名:" type="text" placeholder="标签名" value={tag.name}></Input>
+                <Input
+                    label="标签名:"
+                    type="text"
+                    placeholder="标签名"
+                    value={tag.name}
+                    onChange={(e) => {
+                        updateTag(tag.id, { name: e.target.value })
+                    }}
+                />
             </InputWrapper>
             <Center>
                 <Button>删除标签</Button>
