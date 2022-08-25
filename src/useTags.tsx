@@ -1,5 +1,7 @@
+/* eslint-disable */
 import { useState } from "react";
 import { createId } from "lib/createId";
+
 
 // 这就是自定义的Hook  自定义Hook必须使用use开头  这里是操作tag的hook 
 
@@ -21,23 +23,11 @@ const useTags = () => {
             return result;
         }
     };
-    const updateTag = (id: number, obj: { name: string }) => {
-        //获取tag的下标，
-        const index = findTagIndex(id);
-        // tagsClone 是对tags的 深拷贝 , 不可以直接修改数据，数据不可变
-        const tagsClone = JSON.parse(JSON.stringify(tags));
-        // 把 tagsClone的第index个删掉，换成 { id: id, name: obj.name }
-        tagsClone.splice(index, 1, { id: id, name: obj.name })
-        setTags(tagsClone);
+    const updateTag = (id: number, { name }: { name: string }) => {
+        setTags(tags.map(tag => tag.id === id ? { id, name: name } : tag));
     };
     const deleteTag = (id: number) => {
-        //获取tag的下标，
-        const index = findTagIndex(id);
-        // tagsClone 是对tags的 深拷贝 , 不可以直接修改数据，数据不可变
-        const tagsClone = JSON.parse(JSON.stringify(tags));
-        // 把 tagsClone的第index个删掉，换成 { id: id, name: obj.name }
-        tagsClone.splice(index, 1)
-        setTags(tagsClone);
+        setTags(tags.filter((tag) => { tag.id !== id }));
     };
 
     return {
