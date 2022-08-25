@@ -61,7 +61,6 @@ type Props = {
 
 //React.FC 是 React.FunctionComponent的简写
 const NumberPadSection: React.FC<Props> = (props) => {
-    // const [output, _setOutput] = useState(props.value.toString());
     const output = props.value.toString();
     const setOutput = (output: string) => {
         let value
@@ -75,7 +74,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
         props.onChange(value);
     }//控制最大输入长度
     const onClickButtonWrapper = (e: React.MouseEvent) => {
-        const text = (e.target as HTMLButtonElement).textContent
+        const text = (e.target as HTMLButtonElement).textContent;
         if (text === null) { return; }
         if (text === 'OK') {
             if (props.onOk) { props.onOk(); }
@@ -103,7 +102,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <button className="ok">ok</button>
+                <button className="ok">OK</button>
                 <button className="zero">0</button>
                 <button >.</button>
             </div>
