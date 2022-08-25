@@ -29,6 +29,12 @@ const useTags = () => {
     const deleteTag = (id: number) => {
         setTags(tags.filter((tag) => { tag.id !== id }));
     };
+    const addTag = () => {
+        const tagName = window.prompt('请输入标签名');
+        if (tagName !== null) {
+            setTags([...tags, { id: createId(), name: tagName }])
+        }
+    };
 
     return {
         tags,//读
@@ -37,6 +43,7 @@ const useTags = () => {
         updateTag,//更改 实际上是拷贝了一个副本进行修改
         findTagIndex,//读取下标index（id）
         deleteTag,//删除tag
+        addTag,//新增tag
     }
 }
 

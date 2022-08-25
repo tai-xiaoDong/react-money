@@ -26,7 +26,7 @@ const Space = styled.div`
 `
 
 const Tags = () => {
-    const { tags } = useTags()
+    const { tags, addTag } = useTags()
     return (
         <Layout>
             <TagList>
@@ -41,7 +41,7 @@ const Tags = () => {
             </TagList>
             <Center>
                 <Space></Space>
-                <Button>新增标签</Button>
+                <Button onClick={addTag}>新增标签</Button>
                 <Space></Space>
             </Center>
         </Layout>
