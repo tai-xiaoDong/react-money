@@ -32,7 +32,6 @@ const Money = () => {
     }
     return (
         <MyLayout className="hi">
-            {JSON.stringify(selected)}
             <TagsSection
                 value={selected.tagIds}
                 onChange={(tagIds) => onChange({ tagIds })}

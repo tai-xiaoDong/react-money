@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
 import generateOutput from './generateOutput';
+import { useState } from 'react';
 
 const Wrapper = styled.section`
     display: flex;
@@ -61,17 +62,18 @@ type Props = {
 
 //React.FC 是 React.FunctionComponent的简写
 const NumberPadSection: React.FC<Props> = (props) => {
-    const output = props.value.toString();
+    const [output, _setOutput] = useState(props.value.toString());
     const setOutput = (output: string) => {
-        let value
+        let newOutput
         if (output.length > 16) {
-            value = parseFloat(output.slice(0, 16));
+            newOutput = output.slice(0, 16);
         } else if (output.length === 0) {
-            value = 0;
+            newOutput = '0';
         } else {
-            value = parseFloat(output);
-        }
-        props.onChange(value);
+            newOutput = output;
+        };
+        _setOutput(newOutput);
+        props.onChange(parseFloat(newOutput));
     }//控制最大输入长度
     const onClickButtonWrapper = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent;
