@@ -48,6 +48,10 @@ const useTags = () => {
             setTags([...tags, { id: createId(), name: tagName }])
         }
     };
+    const getName = (id: number) => {
+        const tag = tags.filter(tag => tag.id === id)[0];
+        return tag ? tag.name : '';
+    }
 
     return {
         tags,//读
@@ -57,6 +61,7 @@ const useTags = () => {
         findTagIndex,//读取下标index（id）
         deleteTag,//删除tag
         addTag,//新增tag
+        getName,
     }
 }
 
