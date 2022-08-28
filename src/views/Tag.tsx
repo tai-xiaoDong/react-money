@@ -39,6 +39,9 @@ const Tag: React.FC = () => {
     const onClickBack = () => {
         history.goBack()
     };
+    const deleted = (id: number) => {
+        deleteTag(id)
+    }
     return (
         <Layout>
             <Topbar>
@@ -60,7 +63,7 @@ const Tag: React.FC = () => {
                         />
                     </InputWrapper>
                     <Center>
-                        <Button onClick={() => { deleteTag(tag.id) }}>删除标签</Button>
+                        <Button onClick={() => deleted(tag.id)}>{tag.id}删除标签</Button>
                     </Center>
                 </div>
                 : <Center>标签已经删除</Center>

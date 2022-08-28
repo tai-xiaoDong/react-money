@@ -40,7 +40,7 @@ const useTags = () => {
         setTags(tags.map(tag => tag.id === id ? { id, name: name } : tag));
     };
     const deleteTag = (id: number) => {
-        setTags(tags.filter((tag) => { tag.id !== id }));
+        setTags(tags.filter(tag => tag.id !== id));
     };
     const addTag = () => {
         const tagName = window.prompt('请输入标签名');

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useRef } from "react";
 
 const useUpdate = (fn: () => void, deps: any[]) => {
